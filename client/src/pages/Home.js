@@ -130,12 +130,12 @@ const Home = () => {
               {
                 products.map((val) => {
                   return (
-                    <div className='col-lg-3 pb-5'>
-                      <div className="card p-3 mb-4" style={{ width: '15rem' }}>
+                    <div className='col-lg-4 pb-5'>
+                      <div className="card p-3 mb-4" style={{ width: '20rem' }}>
                         {/* <img src="" className="card-img-top" alt="..." /> */}
                         <img src={`http://localhost:8080/product/single-photo/${val._id}`} className="card-img-top" style={{
                           height
-                            : "200px", objectFit: "cover"
+                            : "250px", objectFit: "cover"
                         }} />
                         <div className="card-body">
                           
