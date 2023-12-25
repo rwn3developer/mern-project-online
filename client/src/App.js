@@ -23,6 +23,7 @@ import AdminAddProduct from "./pages/Admin/product/AdminAddProduct";
 import AdminEditproduct from "./pages/Admin/product/AdminEditproduct";
 import Search from "./pages/Search";
 import ProductDetails from "./pages/ProductDetails";
+import Categories from "./pages/Categories";
 //mahadev
 
 
@@ -34,6 +35,8 @@ function App() {
                 <Route element={<Layout/>}>
                 <Route  path="/" element={<Home/>}></Route>
                 <Route path="/product/:slug" element={<ProductDetails/>}></Route>
+                <Route path="/categories" element={<Categories/>}></Route>
+
                 <Route  path="/search" element={<Search/>}></Route>
                   <Route path="/login" element={<Login/>}></Route>
                   <Route path="/register" element={<Register/>}></Route>
