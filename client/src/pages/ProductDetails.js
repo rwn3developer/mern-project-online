@@ -64,6 +64,8 @@ function ProductDetails() {
                 </div>
 
                 <div className='row container mt-5'>
+                     <h3 className='text-center'>Similar Product</h3>
+                    {similarProduct.length < 1 && (<h5>No similar product</h5>)}
                     {
                         similarProduct.map((val) => {
                             return (

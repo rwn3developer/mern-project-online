@@ -14,7 +14,7 @@ routes.get('/single-category/:slug',categorycontroller.singleCategory);
 
 routes.delete('/delete-category/:id',requireSignIn,isAdmin,categorycontroller.deleteCategory);
 
-routes.put('/update-category/:id',requireSignIn,isAdmin,categorycontroller.updateCategory);
+routes.put('/update-category/:id',requireSignIn,isAdmin,categorycontroller.updateCategory); 
 
 
 module.exports = routes;

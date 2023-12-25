@@ -2,6 +2,8 @@ const productModel = require('../models/ProductModel');
 const slugify = require('slugify');
 const fs = require('fs');
 const formidable = require('formidable');
+
+//create product
 const createProduct = async(req, res) => {
     try {
         const { name, description, price, category, qty, shipping } =
@@ -46,6 +48,7 @@ const createProduct = async(req, res) => {
       }
 }
 
+//product get all
 const getproduct = async (req, res) => {
     try {
         let products = await productModel.find({}).populate('category').limit(10).sort({ createdAt: -1 });
@@ -96,6 +99,7 @@ const singleProduct = async (req, res) => {
     }
 }
 
+//product delete
 const deleteProduct = async (req, res) => {
     try {
             
@@ -132,7 +136,7 @@ const singlePhoto = async(req,res) => {
 }
 //fetch image in product table
 
-
+//product update
 const updateProduct = async (req, res) => {
     try {
         const { name, description, price, category, qty, shipping } =
@@ -182,7 +186,7 @@ const updateProduct = async (req, res) => {
 }
 
 
-//filter
+//filter product
 const productfilter = async(req,res) => {
     try{
       const { checked, radio } = req.body;
@@ -203,7 +207,7 @@ const productfilter = async(req,res) => {
       });
     }
 } 
-
+//search product
 const searchProduct = async(req,res) => {
   try{
     let keyword = req.params.keyword;
