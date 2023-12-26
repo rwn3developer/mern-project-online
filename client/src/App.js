@@ -24,6 +24,7 @@ import AdminEditproduct from "./pages/Admin/product/AdminEditproduct";
 import Search from "./pages/Search";
 import ProductDetails from "./pages/ProductDetails";
 import Categories from "./pages/Categories";
+import CategoryWiseFilter from "./pages/CategoryWiseFilter";
 //mahadev
 
 
@@ -36,6 +37,8 @@ function App() {
                 <Route  path="/" element={<Home/>}></Route>
                 <Route path="/product/:slug" element={<ProductDetails/>}></Route>
                 <Route path="/categories" element={<Categories/>}></Route>
+                <Route path="/category/:slug" element={<CategoryWiseFilter/>}></Route>
+
 
                 <Route  path="/search" element={<Search/>}></Route>
                   <Route path="/login" element={<Login/>}></Route>

@@ -1,4 +1,6 @@
 const productModel = require('../models/ProductModel');
+const categoryModel = require('../models/CategoryModel');
+
 const slugify = require('slugify');
 const fs = require('fs');
 const formidable = require('formidable');
@@ -250,6 +252,25 @@ const similarproduct = async(req,res) =>{
     }
 }
 
+//category wise product filter
+const categoryWiseProduct =  async(req,res) => {
+      try{
+          const category = await categoryModel.findOne({slug : req.params.slug});
+          const product = await productModel.find({category}).populate('category');
+          return res.status(200).send({
+            success : true,
+            category,
+            product
+          })
+      }catch(err){
+        res.status(500).send({
+          success: false,
+          err,
+          message: "Error in category wise filter Product", 
+        });
+      }
+}
+
 module.exports = {
     createProduct,
     getproduct,
@@ -259,5 +280,6 @@ module.exports = {
     singlePhoto,
     productfilter,
     searchProduct,
-    similarproduct
+    similarproduct,
+    categoryWiseProduct
 }

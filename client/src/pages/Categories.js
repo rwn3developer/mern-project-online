@@ -13,14 +13,16 @@ const Categories = () => {
       <main style={{ minHeight: '80vh' }}>
         <h1 className='text-center'>Category page</h1>
         <div className='container'>
-            <div className='row'>
+            <div className='row mt-5'>
                 {
                     categories.map((cat)=>{
                         return (
-                            <div>
-                                <Link to={`/category/${cat.slug}`}>
-                                    {cat.name}
-                                </Link>
+                            <div className='col-md-6' key={cat._id}>
+                                <button className='btn btn-primary mb-3 w-25'>
+                                    <Link className='text-white' to={`/category/${cat.slug}`}>
+                                        {cat.name}
+                                    </Link>
+                                </button>
                             </div>
                         )
                     })

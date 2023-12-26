@@ -29,8 +29,11 @@ routes.post('/product-filter',productcontroller.productfilter);
 routes.get('/search-product/:keyword',productcontroller.searchProduct);
 
 // similar product
+routes.get('/similar-product/:pid/:cid',productcontroller.similarproduct);
 
-routes.get('/similar-product/:pid/:cid',productcontroller.similarproduct)
+
+//category wise product
+routes.get('/product-category/:slug',productcontroller.categoryWiseProduct);
 
 
 module.exports = routes;
