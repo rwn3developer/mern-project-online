@@ -25,6 +25,7 @@ import Search from "./pages/Search";
 import ProductDetails from "./pages/ProductDetails";
 import Categories from "./pages/Categories";
 import CategoryWiseFilter from "./pages/CategoryWiseFilter";
+import CartPage from "./pages/CartPage";
 //mahadev
 
 
@@ -38,6 +39,8 @@ function App() {
                 <Route path="/product/:slug" element={<ProductDetails/>}></Route>
                 <Route path="/categories" element={<Categories/>}></Route>
                 <Route path="/category/:slug" element={<CategoryWiseFilter/>}></Route>
+                <Route path="/cart" element={<CartPage/>}></Route>
+
 
 
                 <Route  path="/search" element={<Search/>}></Route>

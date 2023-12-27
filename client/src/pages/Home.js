@@ -9,11 +9,15 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Checkbox, Radio } from 'antd'
 import { price } from '../components/Layout/Price'
 import { useNavigate } from 'react-router-dom'
+import { useCart } from '../context/Cart'
 
 const Home = () => {
 
   const navigate = useNavigate();
+  //authentication
   const [auth, settAuth] = useAuth();
+  //add to cart
+  const [cart,setCart] = useCart();
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [checked, setChecked] = useState([]);
@@ -146,7 +150,10 @@ const Home = () => {
 
                          
                           <button onClick={ () => navigate(`/product/${val.slug}`) } className='w-100 btn btn-primary btn-sm'>More Details</button>
-                          <button className='mt-3 w-100 btn btn-success btn-sm'>Add Cart</button>
+                          <button className='mt-3 w-100 btn btn-success btn-sm' onClick={ () =>{
+                            setCart([...cart,val])
+                            alert("Item Add to cart")
+                            }}>Add Cart</button>
                         </div>
                       </div>
                     </div>
