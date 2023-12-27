@@ -152,6 +152,7 @@ const Home = () => {
                           <button onClick={ () => navigate(`/product/${val.slug}`) } className='w-100 btn btn-primary btn-sm'>More Details</button>
                           <button className='mt-3 w-100 btn btn-success btn-sm' onClick={ () =>{
                             setCart([...cart,val])
+                            localStorage.setItem('cart',JSON.stringify([...cart,val]))
                             alert("Item Add to cart")
                             }}>Add Cart</button>
                         </div>
