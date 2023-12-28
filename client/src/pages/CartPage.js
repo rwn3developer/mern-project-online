@@ -47,7 +47,7 @@ const CartPage = () => {
                             <h1 className='text-center'>Cart page</h1>
                             <h4 className='text-center'>{`hello ${auth.token && auth?.user?.name}`}</h4>
                             <h3 className='text-center'>
-                                {cart?.length > 1
+                                {cart?.length != 0
                                     ? `you have ${cart.length} item in your cart ${auth?.token ? "" : "please login to checkout"
                                     }`
                                     : "You cart is Empty"

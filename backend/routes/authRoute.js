@@ -27,4 +27,6 @@ routes.get('/admin-auth',requireSignIn,isAdmin,(req,res)=>{
 
 routes.post('/forgot-password',authcontroller.forgotpassword);
 
+routes.put('/update-profile',requireSignIn,authcontroller.updateProfile);
+
 module.exports = routes;
