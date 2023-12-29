@@ -26,9 +26,15 @@ const Profile = () => {
     const handleSubmit = async(e) => {
         e.preventDefault();
         try{
-            const {data} = axios.get(`http://localhost:8080/update-profile`,{
-                name,email,password,phone
+            const {data} = await axios.put(`http://localhost:8080/update-profile`,{
+                name,password,phone
             })
+            // console.log(data);
+            setAuth({...auth,user : data?.updatedUser});
+            let ls = JSON.parse(localStorage.getItem('auth'));
+            ls.user = data.updatedUser;
+            localStorage.setItem('auth',JSON.stringify(ls));
+            alert("profile successfully update");
         }catch(err){
             console.log(err);
             return false;

@@ -57,7 +57,7 @@ const CartPage = () => {
                     </div>
 
                     <div className='row mt-4'>
-                        <div className='col-md-8'>
+                        <div className='col-md-8'> 
                             {
                                 cart?.map((p) => {
                                     return (

@@ -97,8 +97,9 @@ const forgotpassword = async(req,res) => {
 //profile update
 const updateProfile = async(req,res) => {
     try{
-        const {name,email,password,phone} = req.body;
+        const {name,password,phone} = req.body;
         const user = await userModel.findById(req.user._id);
+        
         //password
         if(!password ||  password.length < 6){
             return res.status(500).send({
@@ -106,15 +107,18 @@ const updateProfile = async(req,res) => {
                 messege : "Password is required and 6 character long"
             })
         }
-        const hashedPassword = await password ? await hashPassword(password) : undefined;
+        // const hashedPassword = await password ? await hashPassword(password) : undefined;
+        const hashed = password ?  await hashPassword(password) : undefined;
+        console.log(hashed);
         const updatedUser = await userModel.findByIdAndUpdate(req.user._id,{
             name : name || user.name,
-            password : password || user.password,
+            password :  hashed,
             phone : phone || user.phone
         })
         return res.status(200).send({
             success : true,
-            messege : "Profile successfully updated"
+            messege : "Profile successfully updated",
+            updatedUser
         })
     }catch(err){
         res.send({
