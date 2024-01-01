@@ -9,19 +9,20 @@ const Register = () => {
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
   const [phone,setPhone] = useState("");
+  const [address,setAddress] = useState("");
   const [sport,setSport] = useState("");
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-      console.log(sport);
     try{
-        let res = await axios.post("http://localhost:8080/register",{name,email,password,phone,sport});
+        let res = await axios.post("http://localhost:8080/register",{name,email,password,phone,address,sport});
         if(res.data.success){
           alert(res.data.messege)
           setName("");
           setEmail("");
           setPassword("");
           setPhone("");
+          setAddress("");
           setSport("");
 
         }else{
@@ -63,6 +64,10 @@ const Register = () => {
                       <div className="mb-3">
                         <label htmlFor="exampleInputPassword1" className="form-label">Phone</label>
                         <input type="number" onChange={ (e) => setPhone(e.target.value) } value={phone} className="form-control" id="exampleInputPassword1" />
+                      </div>
+                      <div className="mb-3">
+                        <label htmlFor="exampleInputPassword1" className="form-label">Address</label>
+                        <input type="text" onChange={ (e) => setAddress(e.target.value) } value={address} className="form-control" id="exampleInputPassword1" />
                       </div>
                       <div className="mb-3">
                         <label htmlFor="exampleInputPassword1" className="form-label">What is Your Faviourte sports ?</label>

@@ -13,21 +13,23 @@ const Profile = () => {
     const [name,setName] = useState("")
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
+    const [address,setAddress] = useState("");
     const [phone,setPhone] = useState("");
 
     //user get data
     useEffect(()=>{
-        const {name,email,phone} = auth?.user;
+        const {name,email,phone,address} = auth?.user;
         setName(name);
         setEmail(email);
         setPhone(phone);
+        setAddress(address)
     },[auth?.user])
 
     const handleSubmit = async(e) => {
         e.preventDefault();
         try{
             const {data} = await axios.put(`http://localhost:8080/update-profile`,{
-                name,password,phone
+                name,password,phone,address
             })
             // console.log(data);
             setAuth({...auth,user : data?.updatedUser});
@@ -69,6 +71,10 @@ const Profile = () => {
                                             <div className="mb-3">
                                                 <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                                                 <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} className="form-control" id="exampleInputPassword1" />
+                                            </div>
+                                            <div className="mb-3">
+                                                <label htmlFor="exampleInputPassword1" className="form-label">Address</label>
+                                                <input type="text" onChange={(e) => setAddress(e.target.value)} value={address} className="form-control" id="exampleInputPassword1" />
                                             </div>
                                             <div className="mb-3">
                                                 <label htmlFor="exampleInputPassword1" className="form-label">Phone</label>

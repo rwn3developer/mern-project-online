@@ -4,10 +4,8 @@ const userModel = require('../models/userModel');
 
 const register = async(req,res) => {
    try{ 
-        const {name,email,password,phone,sport,role} = req.body;
-
-        console.log(sport);
-        
+        const {name,email,password,phone,address,sport,role} = req.body;
+        console.log(req.body);        
         if(!name){
             return res.send({error : "Name is Required"});
         }
@@ -19,6 +17,9 @@ const register = async(req,res) => {
         }
         if(!password){
             return res.send({error : "Password is Required"}); 
+        }
+        if(!address){
+            return res.send({error : "Address is Required"}); 
         }
         if(!sport){
             return res.send({error : "Password is Required"}); 
@@ -40,6 +41,7 @@ const register = async(req,res) => {
             password : hashedPassword, 
             phone : phone,
             answer : sport,
+            address : address,
             role :0
         })
         if(user){
@@ -97,7 +99,7 @@ const forgotpassword = async(req,res) => {
 //profile update
 const updateProfile = async(req,res) => {
     try{
-        const {name,password,phone} = req.body;
+        const {name,password,phone,address} = req.body;
         const user = await userModel.findById(req.user._id);
         
         //password
@@ -109,10 +111,10 @@ const updateProfile = async(req,res) => {
         }
         // const hashedPassword = await password ? await hashPassword(password) : undefined;
         const hashed = password ?  await hashPassword(password) : undefined;
-        console.log(hashed);
         const updatedUser = await userModel.findByIdAndUpdate(req.user._id,{
             name : name || user.name,
-            password :  hashed,
+            password :  hashed || user.password,
+            address : address || user.address,
             phone : phone || user.phone
         })
         return res.status(200).send({
